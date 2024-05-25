@@ -26,17 +26,19 @@ jobs:
             sudo killall python
             mkdir postdjdeploy
             cd postdjdeploy
-            virtualenv myenv
-            cd postdjdeploy
+            #virtualenv myenv
+            #cd postdjdeploy
 
             git init 
 
             # Pull the latest code from the Git repository
-            git pull https://github.com/Gajanan-kale/Chatbot_naive_bert.git main
-
+            git pull https://github.com/Gajanan-kale/Chatbot_naive_bert_250524.git main
+            # Create and activate a new virtual environment
+            python3 -m venv myenv2
+            source myenv2/bin/activate
 
             # Activate your virtual environment
-            source myenv/bin/activate
+            #source myenv/bin/activate
 
             # Install or update Python dependencies
             pip install -r requirements.txt
@@ -44,7 +46,7 @@ jobs:
             # Run Django database migrations
             python manage.py migrate
 
-             # Run Django database migrations
+            # Run Django database migrations
       
             python3 manage.py migrate 
             python3 manage.py runserver 0.0.0.0:8006
