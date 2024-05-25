@@ -21,9 +21,9 @@ jobs:
           key: ${{ secrets.EC_SSH_KEY }}
           script: |
             # Change to your project directory on the EC2 instance
-            sudo apt update
+            #sudo apt update
 
-            rm -rf myenv
+            rm -rf myenv2
             rm -rf postdjdeploy2
             sudo killall python
 
@@ -32,7 +32,7 @@ jobs:
             #virtualenv myenv2
             
             git init 
-            git branch -m main
+            #git branch -m main
 
             # Pull the latest code from the Git repository
             git pull https://github.com/Gajanan-kale/Chatbot_naive_bert_250524.git main
