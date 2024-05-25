@@ -22,7 +22,7 @@ jobs:
           script: |
             # Update package list and install necessary packages
             sudo apt update
-            sudo apt install -y python3-venv
+            sudo apt install -y python3-venv python3-dev build-essential libssl-dev libffi-dev python3-setuptools pkg-config libmysqlclient-dev
 
             # Remove previous virtual environment and deployment directory
             rm -rf myenv2
@@ -41,6 +41,9 @@ jobs:
             python3 -m venv myenv2
             source myenv2/bin/activate
 
+            # Upgrade pip to the latest version
+            pip install --upgrade pip
+
             # Install Python dependencies
             pip install -r requirements.txt
 
@@ -48,8 +51,8 @@ jobs:
             python3 manage.py migrate
 
             # Run the Django development server
-            python3 manage.py runserver 0.0.0.0:8000
-
+            nohup python3 manage.py runserver 0.0.0.0:8000 &
+            
             # Optionally, collect static files if needed
             # python3 manage.py collectstatic --noinput
 
