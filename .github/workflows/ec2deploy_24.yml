@@ -27,7 +27,7 @@ jobs:
             mkdir postdjdeploy
             cd postdjdeploy
             virtualenv myenv
-            cd postdjdeploy
+           
             git init 
 
             # Pull the latest code from the Git repository
