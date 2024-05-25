@@ -33,8 +33,9 @@ jobs:
             
             git init 
             #git branch -m main
-
+            git remote add origin git@github.com:Gajanan-kale/Chatbot_naive_bert_250524.git
             # Pull the latest code from the Git repository
+            git pull orign main
             git pull https://github.com/Gajanan-kale/Chatbot_naive_bert_250524.git main
             python3 -m venv myenv2
 
