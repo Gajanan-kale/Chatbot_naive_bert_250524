@@ -22,7 +22,7 @@ jobs:
           script: |
             # Change to your project directory on the EC2 instance
             rm -rf myenv
-            rm -rf postdjdeploy
+            rm -rf postdjdeploy2
             sudo killall python
 
             mkdir postdjdeploy2
@@ -32,7 +32,7 @@ jobs:
             git init 
 
             # Pull the latest code from the Git repository
-            git pull https://github.com/Gajanan-kale/Chatbot_naive_bert.git main
+            git pull https://github.com/Gajanan-kale/Chatbot_naive_bert_250524.git main
 
 
             # Activate your virtual environment
