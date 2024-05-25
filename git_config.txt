@@ -1,0 +1,49 @@
+git remote add origin git@github.com:Gajanan-kale/Chatbot_naive_bert.git main
+git remote -v
+git pull origin main
+git add .
+git commit -m "fc"
+git push -u origin master
+
+above is done using ssh key in github
+generate ssh key and add in githhub account.
+
+ssh-keygen -t ed25519 -C "your_email@example.com"
+cat ~/.ssh/id_ed25519.pub | clip
+Add the SSH Key to GitHub:
+
+Go to your GitHub account and navigate to Settings -> SSH and GPG keys.
+Click New SSH key.
+Paste your SSH key into the "Key" field.
+Give it a descriptive title.
+Click Add SSH key.
+
+
+git remote add origin git@github.com:username/repository.git
+git remote -v
+git push -u origin main
+if file is greatter than 100mb it gives error in uploading
+track large files
+nstall Git LFS by following the instructions on the official Git LFS website.
+git lfs track "path/to/your/large/file"
+tore large files outside of your Git repository and provide instructions on how to obtain them. You can use cloud storage services 
+like Google Drive, Dropbox, or AWS S3 to host your large files and include download links or instructions in your repository's README.md file.
+
+
+git remote rm command to remove a remote URL from your repository.
+git remote rm destination
+
+
+PS C:\Data\chatbot_project - Copy> git rm --cached filename fine_tuned_bert_automotive.pkl
+fatal: pathspec 'filename' did not match any files
+PS C:\Data\chatbot_project - Copy> git rm --cached fine_tuned_bert_automotive.pkl
+fatal: pathspec 'fine_tuned_bert_automotive.pkl' did not match any files
+PS C:\Data\chatbot_project - Copy> cd chatbot
+PS C:\Data\chatbot_project - Copy\chatbot> git rm --cached fine_tuned_bert_automotive.pkl
+rm 'chatbot/fine_tuned_bert_automotive.pkl'
+PS C:\Data\chatbot_project - Copy\chatbot> cd ..
+PS C:\Data\chatbot_project - Copy> git add .gitignore
+PS C:\Data\chatbot_project - Copy> git commit -m "Stop tracking filename and add to .gitignore"
+[main f1d4548] Stop tracking filename and add to .gitignore
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 chatbot/fine_tuned_bert_automotive.pkl
