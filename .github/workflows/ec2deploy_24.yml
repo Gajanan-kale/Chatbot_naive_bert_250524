@@ -24,8 +24,8 @@ jobs:
             rm -rf myenv
             rm -rf postdjdeploy
             sudo killall python
-            mkdir postdjdeploy
-            cd postdjdeploy
+            mkdir postdjdeploy1
+            cd postdjdeploy1
             virtualenv myenv
            
             git init 
