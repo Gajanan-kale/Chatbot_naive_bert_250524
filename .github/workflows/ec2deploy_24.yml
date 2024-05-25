@@ -24,6 +24,7 @@ jobs:
             rm -rf myenv
             rm -rf postdjdeploy
             sudo killall python
+
             mkdir postdjdeploy2
             cd postdjdeploy2
             virtualenv myenv2
@@ -36,19 +37,27 @@ jobs:
 
             # Activate your virtual environment
             source myenv2/bin/activate
+            #source myenv/bin/activate
+
 
             # Install or update Python dependencies
-            pip install -r requirements.txt
+            #pip install -r requirements.txt
 
             
             # Run Django database migrations
       
             python3 manage.py migrate 
             python3 manage.py runserver 0.0.0.0:8000
+            #python manage.py migrate
+
+            # Run Django database migrations
+      
+            #python3 manage.py migrate 
+            #python3 manage.py runserver 0.0.0.0:8006
 
             # Collect static files (if you're serving them via Django)
-            python manage.py collectstatic --noinput
+            #python manage.py collectstatic --noinput
 
             # Restart your application server (e.g., Gunicorn, uWSGI, etc.)
-            systemctl restart gunicorn
+            #systemctl restart gunicorn
 
