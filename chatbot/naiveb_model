@@ -1,0 +1,71 @@
+#confidence_threshold=0.5
+# Function to classify intent using Naive Bayes classifier
+def model_build(intents, rejection_threshold=0.7):
+    """
+    tfidf_vectorizer = TfidfVectorizer()
+    X_train = tfidf_vectorizer.fit_transform(intents['data'])
+    clf = MultinomialNB()
+    clf.fit(X_train, intents['target'])
+
+    #print("user_in:",user_input)
+    print(clf.score)
+    user_vector = tfidf_vectorizer.transform([user_input])
+    #print("user_vector:",user_vector)
+    predicted_probabilities = clf.predict_proba(user_vector)[0]
+    #print("prob:",predicted_probabilities)
+    max_probability = max(predicted_probabilities)
+    predicted_intent = clf.classes_[predicted_probabilities.argmax()]
+    print("pintent:",predicted_intent)
+    # Check if the maximum predicted probability is above the confidence threshold
+    #if max_probability >= rejection_threshold:
+        #return predicted_intent
+    #else:
+        # If not, treat the input as unknown
+        #return "unknown_intent"
+    """
+    from sklearn.model_selection import train_test_split
+    from sklearn.metrics import precision_score, recall_score, accuracy_score, confusion_matrix
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.naive_bayes import MultinomialNB
+    # Split data into training and testing sets
+    X=intents['data']
+    y=intents['target']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    # Vectorize the input data
+    tfidf_vectorizer = TfidfVectorizer()
+    X_train_vectorized = tfidf_vectorizer.fit_transform(X_train)
+    X_test_vectorized = tfidf_vectorizer.transform(X_test)
+
+    # Train the classifier
+    clf = MultinomialNB()
+    clf.fit(X_train_vectorized, y_train)
+    """
+    user_vector = tfidf_vectorizer.transform([user_input])
+    #print("user_vector:",user_vector)
+    predicted_probabilities = clf.predict_proba(user_vector)[0]
+    #print("prob:",predicted_probabilities)
+    max_probability = max(predicted_probabilities)
+    predicted_intent = clf.classes_[predicted_probabilities.argmax()]
+    print("pintent:",predicted_intent)
+    # Make predictions
+    y_pred = clf.predict(X_test_vectorized)
+    #print("y_pred:",y_pred[:5])
+    #print("y_test",y_test[:5])
+
+    # Calculate evaluation metrics
+    precision = precision_score(y_test, y_pred, average='weighted')
+    #print("p:",precision)
+    recall = recall_score(y_test, y_pred, average='weighted')
+    #print("r:",recall)
+    accuracy = accuracy_score(y_test, y_pred)
+    #print("a:",accuracy)
+    confusion_mat = confusion_matrix(y_test, y_pred)
+    #print("cm:",confusion_matrix)
+    confidence_threshold=0.5
+    #if max_probability < confidence_threshold:
+        #return "unknown_intent", max_probability
+    #else:
+        #return predicted_intent, max_probability
+    """
+    return clf,tfidf_vectorizer
