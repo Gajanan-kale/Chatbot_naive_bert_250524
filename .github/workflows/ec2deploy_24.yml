@@ -32,6 +32,7 @@ jobs:
             #virtualenv myenv2
             
             git init 
+            git branch -m main
 
             # Pull the latest code from the Git repository
             git pull https://github.com/Gajanan-kale/Chatbot_naive_bert_250524.git main
