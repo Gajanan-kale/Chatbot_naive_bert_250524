@@ -1,1 +1,44 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main  # Change to your main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: SSH into EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC_HOST }}
+          username: ${{ secrets.EC_USERNAME }}
+          key: ${{ secrets.EC_SSH_KEY }}
+          script: |
+            # Change to your project directory on the EC2 instance
+            cd postdjdeploy
+
+            # Pull the latest code from the Git repository
+            git pull https://github.com/gajanankumar/post_cicd.git main
+
+
+            # Activate your virtual environment
+            source penv/bin/activate
+
+            # Install or update Python dependencies
+            pip install -r requirements.txt
+
+            # Run Django database migrations
+            python manage.py migrate
+
+            # Collect static files (if you're serving them via Django)
+            python manage.py collectstatic --noinput
+
+            # Restart your application server (e.g., Gunicorn, uWSGI, etc.)
+            systemctl restart gunicorn
 
